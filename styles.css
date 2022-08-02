@@ -1,0 +1,113 @@
+body {
+    background-color: lightgray;
+    color: #e6e6e6;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    background: rgba(35,34,34,0.8);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    border: 1px solid rgba(35,34,34,0.4);
+    height: 120px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.last-operation {
+    min-height: 32px;
+    font-size: 20px;
+}
+
+.current-operation {
+    min-height: 64px;
+    font-size: 40px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 100px;
+    height: 90px;
+    border-radius: 0;
+    border-style: solid;
+    border-color: #252323;
+    border-width: 1px;
+    background-color: #5a5959;
+    font-size: 32px;
+    color: #e6e6e6;
+}
+
+.btn-darkgrey {
+    width: 100px;
+    height: 90px;
+    border-radius: 0;
+    border-style: solid;
+    border-color: #252323;
+    border-width: 1px;
+    background-color: #393838;
+    font-size: 32px;
+    color: #e6e6e6;
+}
+
+.btn-orange {
+    width: 100px;
+    height: 90px;
+    border-radius: 0;
+    border-style: solid;
+    border-color: #252323;
+    border-width: 1px;
+    background-color: #ff9f0b;
+    font-size: 32px;
+    color: #e6e6e6;
+}
+
+.btn-2 {
+    width: 200px;
+    height: 90px;
+    border-radius: 0;
+    border-style: solid;
+    border-color: #252323;
+    border-width: 1px;
+    background-color: #5a5959;
+    font-size: 32px;
+    color: #e6e6e6;
+}
+
+.btn:active, .btn-2:active {
+    background-color: #9c9b9b;
+}
+
+.btn-darkgrey:active {
+    background-color: #5a5959;
+}
+
+.btn-orange:active {
+    background-color: #cb7e08;
+}
