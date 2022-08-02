@@ -1,25 +1,54 @@
-console.log(add(2, 4)); //expect 6
-console.log(subtract(2, 4)); //expect -2 
-console.log(multiply(2, 4)); //expect 8
-console.log(divide(2, 4)); //expect 0.5
-console.log(power(2, 4)); //expect 16
+let operator = prompt("Enter an operator");
+let a = prompt("Enter first number");
+let b = prompt("Enter second number");
+let answer;
+
+operate();
+
+function operate() {
+
+    a = Number(a);
+    b = Number(b);
+
+    switch(operator) {
+        case '+':
+            return add(a, b)
+        case '-':
+            return subtract(a, b)
+        case '*':
+            return multiply(a, b)
+        case '/':
+            if (b === 0) return null
+            return divide(a, b)
+        case '^':
+            return power(a, b)
+        default: 
+            return null
+    }
+
+}
 
 function add(a, b) {
-    return a + b;
+    answer = a + b;
+    console.log(answer);
 }
 
 function subtract(a, b) {
-    return a - b;
+    answer = a - b;
+    console.log(answer);
 }
 
 function multiply(a, b) {
-    return a * b;
+    answer = a * b;
+    console.log(answer);
 }
  
 function divide(a, b) {
-    return a / b;
+    answer = a / b;
+    console.log(answer);
 }
 
 function power(a, b) {
-    return Math.pow(a, b);
+    answer = Math.pow(a, b);
+    console.log(answer);
 }
