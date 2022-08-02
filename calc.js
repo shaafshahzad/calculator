@@ -1,7 +1,39 @@
-let operator = prompt("Enter an operator");
-let a = prompt("Enter first number");
-let b = prompt("Enter second number");
-let answer;
+const numBtn = document.querySelectorAll('[data-number]');
+const operateBtn = document.querySelectorAll('[data-operator]');
+const equalBtn = document.getElementById('equalsBtn')
+const clearBtn = document.getElementById('clearBtn')
+const delBtn = document.getElementById('delBtn')
+const dotBtn = document.getElementById('dotBtn')
+const lastOp = document.getElementById('lastOp')
+const currentOp = document.getElementById('currentOp')
+
+clearBtn.addEventListener('click', clearScreen);
+delBtn.addEventListener('click', deleteNum);
+dotBtn.addEventListener('click', appendDot);
+numBtn.forEach((button) =>
+    button.addEventListener('click', () => appendNum(button.textContent))
+);
+
+function appendNum(num) {
+    if (currentOp.textContent === '0') currentOp.textContent = '';
+    currentOp.textContent += num;
+}
+
+function appendDot() {
+    if (currentOp.textContent.includes('.')) return;
+    currentOp.textContent += '.';
+}
+
+function clearScreen() {
+    currentOp.textContent = '0';
+}
+
+function deleteNum() {
+    currentOp.textContent = currentOp.textContent.toString().slice(0, -1);
+    if (currentOp.textContent === '') currentOp.textContent = '0';
+}
+
+
 
 operate();
 
@@ -20,8 +52,6 @@ function operate() {
         case '/':
             if (b === 0) return null
             return divide(a, b)
-        case '^':
-            return power(a, b)
         default: 
             return null
     }
@@ -29,26 +59,17 @@ function operate() {
 }
 
 function add(a, b) {
-    answer = a + b;
-    console.log(answer);
+    return a + b;
 }
 
 function subtract(a, b) {
-    answer = a - b;
-    console.log(answer);
+    return a - b;    
 }
 
 function multiply(a, b) {
-    answer = a * b;
-    console.log(answer);
+    return a * b;
 }
  
 function divide(a, b) {
-    answer = a / b;
-    console.log(answer);
-}
-
-function power(a, b) {
-    answer = Math.pow(a, b);
-    console.log(answer);
+    return a / b;
 }
