@@ -2,6 +2,10 @@ let firstOperand = '';
 let secondOperand = '';
 let currentOp = null;
 
+
+//button functionality//
+
+
 const numBtn = document.querySelectorAll('[data-number]');
 const operatorBtn = document.querySelectorAll('[data-operator]');
 const equalBtn = document.getElementById('equalsBtn');
@@ -23,6 +27,11 @@ numBtn.forEach((button) =>
 operatorBtn.forEach((button) =>
     button.addEventListener('click', () => chooseOperator(button.textContent))
 );
+window.addEventListener('keydown', keyboard);
+
+
+//button functions//
+
 
 function appendNum(num) {
     if (currentScreen.textContent === '0') currentScreen.textContent = '';
@@ -63,12 +72,32 @@ function chooseOperator(operator) {
     currentScreen.textContent = '0';
 }
 
+
+//keyboard functionality//
+
+
+function keyboard(e) {
+    if (e.key >= 0 && e.key <= 9) appendNum(e.key);
+    if (e.key === 'Backspace') deleteNum();
+    if (e.key === 'Enter' || e.key === '=') evaluate();
+    if (e.key === '.') appendDot();
+    if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+        chooseOperator(keyOperation(e.key));
+    }
+}
+
+function keyOperation(keyOperator) {
+    if (keyOperator === '+') return '+';
+    if (keyOperator === '-') return '-';
+    if (keyOperator === '*') return 'x';
+    if (keyOperator === '/') return '÷';
+}
+
+//evaluation functions//
+
+
 function evaluate() {
     if (currentOp === null) return;
-    if (currentOp === '÷' && currentScreen.textContent === '0') {
-        alert("You can't divide by 0!");
-        return;
-    }
     secondOperand = currentScreen.textContent;
     currentScreen.textContent = round(operate(currentOp, firstOperand, secondOperand));
     lastScreen.textContent = `${firstOperand} ${currentOp} ${secondOperand} =`;
@@ -78,6 +107,17 @@ function evaluate() {
 function round(number) {
     return Math.round(number * 1000) / 1000;
 }
+
+function error() {
+    if (currentOp === '÷' && currentScreen.textContent === '0') {
+        currentScreen.textContent = 'Error, divide by zero';
+        lastScreen.textContent = '';
+    }
+}
+
+
+//operation functions//
+
 
 operate();
 
@@ -96,7 +136,7 @@ function operate(operator, a, b) {
         case 'x':
             return multiply(a, b)
         case '÷':
-            if (b === 0) return null
+            if (b === 0) return error()
             return divide(a, b)
         default: 
             return null
